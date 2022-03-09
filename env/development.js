@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
-import External from "../core/External";
-import Messages from "../utils/messages";
+import External from "../src/core/External";
+import Messages from "../src/utils/messages";
 
 /**
  * Text

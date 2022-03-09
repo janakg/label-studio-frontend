@@ -1,5 +1,5 @@
-import External from "../core/External";
-import Messages from "../utils/messages";
+import External from "../src/core/External";
+import Messages from "../src/utils/messages";
 
 function getData(task) {
   if (task && task.data) {
