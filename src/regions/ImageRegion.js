@@ -125,6 +125,7 @@ const RegionMixin = types
           source: parent.value,
           type: control.type,
           parent_id: self.parentID === "" ? null : self.parentID,
+          score: self.score? self.score :  null,
         };
 
         if (self.normalization) tree["normalization"] = self.normalization;

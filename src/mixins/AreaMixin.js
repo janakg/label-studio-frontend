@@ -12,6 +12,7 @@ export const AreaMixin = types
     ouid: types.optional(types.number, () => ouid++),
     results: types.array(Result),
     parentID: types.maybeNull(types.string),
+    score: types.maybeNull(types.number),
   })
   .views(self => ({
     // self id without annotation id added to uniquiness across all the tree

@@ -23,7 +23,7 @@ const RegionsMixin = types
       'prediction',
       'prediction-changed',
       'manual',
-    ]), 'manual'),
+    ]), 'prediction-changed'),
   })
   .volatile(() => ({
     // selected: false,
@@ -176,6 +176,7 @@ const RegionsMixin = types
             to_name: parent.name,
             source: parent.value,
             type: control.type,
+            score: self.score? self.score :  null,
             parent_id: self.parentID === "" ? null : self.parentID,
           };
 
