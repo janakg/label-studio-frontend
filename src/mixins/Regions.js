@@ -23,7 +23,7 @@ const RegionsMixin = types
       'prediction',
       'prediction-changed',
       'manual',
-    ]), 'prediction-changed'),
+    ]), 'prediction'),
   })
   .volatile(() => ({
     // selected: false,
