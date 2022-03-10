@@ -70,7 +70,7 @@ export default observer(({
 
       {count ? (
         <Elem name="header">
-          <Space spread align={regionStore.view === "regions" ? null : "end"}>
+          {/* <Space spread align={regionStore.view === "regions" ? null : "end"}>
             {regionStore.view === "regions"  && (
               <Dropdown overlay={<SortMenu regionStore={regionStore}/>} placement="bottomLeft">
                 <Elem name="sort" onClick={e => e.preventDefault()}>
@@ -94,7 +94,7 @@ export default observer(({
 
 
             </Space>
-          </Space>
+          </Space> */}
         </Elem>
       )
         : null}

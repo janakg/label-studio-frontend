@@ -25,9 +25,9 @@ export const LabelItem = observer(({ item, regions, regionStore }) => {
               {item._value}
             </Label>
           ) : <>Not labeled</>}
-          <Elem name="counter">
+          {/* <Elem name="counter">
             {`${count} Region${(count === 0 || count > 1) ? "s" : ""}`}
-          </Elem>
+          </Elem> */}
         </Elem>
         <Elem
           name="visibility"
