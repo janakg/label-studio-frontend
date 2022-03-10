@@ -12,13 +12,12 @@ export const AnnotationTab = observer(({ store }) => {
 
   return (
     <>
-      {store.hasInterface("annotations:current") && (
-        <CurrentEntity
-          entity={as.selected}
-          showControls={store.hasInterface("controls")}
-          canDelete={store.hasInterface("annotations:delete")}
-          showHistory={store.hasInterface("annotations:history")}
-          showGroundTruth={store.hasInterface("ground-truth")}
+     
+      {hasSegmentation && (
+        <Entities
+          store={store}
+          annotation={annotation}
+          regionStore={annotation.regionStore}
         />
       )}
 
@@ -30,15 +29,17 @@ export const AnnotationTab = observer(({ store }) => {
         </p>
       ) : null}
 
-      {hasSegmentation && (
-        <Entities
-          store={store}
-          annotation={annotation}
-          regionStore={annotation.regionStore}
+      {store.hasInterface("annotations:current") && (
+        <CurrentEntity
+          entity={as.selected}
+          showControls={store.hasInterface("controls")}
+          canDelete={store.hasInterface("annotations:delete")}
+          showHistory={store.hasInterface("annotations:history")}
+          showGroundTruth={store.hasInterface("ground-truth")}
         />
       )}
 
-      {hasSegmentation && (
+      {false && hasSegmentation && (
         <Relations store={store} item={annotation} />
       )}
     </>

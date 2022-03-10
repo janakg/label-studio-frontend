@@ -45,7 +45,7 @@ export default observer(({
             <RadioGroup.Button value="labels">Labels</RadioGroup.Button>
           </RadioGroup>
 
-          <Tooltip title="Delete All Regions">
+          {/* <Tooltip title="Delete All Regions">
             <Button
               look="danger"
               type="text"
@@ -64,13 +64,13 @@ export default observer(({
                   onOk: () => annotation.deleteAllRegions(),
                 });
               }}/>
-          </Tooltip>
+          </Tooltip> */}
         </Space>
       </Elem>
 
-      {count ? (
+      {/* {count ? (
         <Elem name="header">
-          {/* <Space spread align={regionStore.view === "regions" ? null : "end"}>
+          <Space spread align={regionStore.view === "regions" ? null : "end"}>
             {regionStore.view === "regions"  && (
               <Dropdown overlay={<SortMenu regionStore={regionStore}/>} placement="bottomLeft">
                 <Elem name="sort" onClick={e => e.preventDefault()}>
@@ -94,10 +94,10 @@ export default observer(({
 
 
             </Space>
-          </Space> */}
+          </Space>
         </Elem>
       )
-        : null}
+        : null} */}
 
       <Oneof value={regionStore.view}>
         <Elem name="regions" case="regions">
