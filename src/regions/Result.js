@@ -239,6 +239,10 @@ const Result = types
       self.parentID = id;
     },
 
+    setScore(score) {
+      self.score = score;
+    },
+    
     // update region appearence based on it's current states, for
     // example bbox needs to update its colors when you change the
     // label, becuase it takes color from the label

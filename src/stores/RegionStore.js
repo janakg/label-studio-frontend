@@ -99,7 +99,7 @@ const SelectionMap = types.model(
 });
 
 export default types.model("RegionStore", {
-  sort: types.optional(types.enumeration(["date", "score"]), "date"),
+  sort: types.optional(types.enumeration(["date", "score"]), "score"),
   sortOrder: types.optional(types.enumeration(["asc", "desc"]), "asc"),
 
   group: types.optional(types.enumeration(["type", "label"]), "type"),
@@ -186,6 +186,10 @@ export default types.model("RegionStore", {
       const sorted = sorts[self.sort](self.sortOrder === "desc");
 
       return sorted;
+    },
+
+    getAsRegionIds() {
+      return self.regions.map(r => r.id);
     },
 
     asTree(enrich) {
@@ -333,6 +337,24 @@ export default types.model("RegionStore", {
     }
 
     getEnv(self).events.invoke("entityDelete", region);
+    self.initHotkeys();
+  },
+
+  /**
+   * Sort region
+   * @param {array} regionIds
+   */
+  sortRegionsByScore(regionIds) {
+    const arr = [];
+
+    if(regionIds && regionIds.length > 0) {
+      regionIds.forEach(((id, inx) => {
+        const region = self.regions.find(r => r.id === id);
+
+        region.setScore(inx);
+      }));
+    }
+
     self.initHotkeys();
   },
 

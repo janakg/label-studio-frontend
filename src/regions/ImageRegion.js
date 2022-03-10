@@ -61,6 +61,10 @@ const RegionMixin = types
     setParentID(id) {
       self.parentID = id;
     },
+    
+    setScore(score) {
+      self.score = score;
+    },
 
     // All of the below accept size as an arument
     moveTop() {},

@@ -83,6 +83,10 @@ const RegionsMixin = types
       setParentID(id) {
         self.parentID = id;
       },
+      
+      setScore(score) {
+        self.score = score;
+      },
 
       setDrawing(val) {
         self.isDrawing = val;
