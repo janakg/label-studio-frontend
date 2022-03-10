@@ -58,7 +58,7 @@ const RegionItemContent = observer(({ idx, item, setDraggable }) => {
   return (
     <Block ref={itemElRef} name="region-item" mod={{ hidden : item.hidden }}>
       <Elem name="header" tag="div">
-        <Elem name="counter">{isDefined(idx) ? idx + 1 : ""}</Elem>
+        {/* <Elem name="counter">{isDefined(idx) ? idx + 1 : ""}</Elem> */}
 
         <Elem name="title" tag={Node} node={item} mix={styles.node}/>
 
@@ -75,7 +75,7 @@ const RegionItemContent = observer(({ idx, item, setDraggable }) => {
 
           {!item.editable && <Badge count={"ro"} style={{ backgroundColor: "#ccc" }}/>}
 
-          {item.score && (
+          {false && item.score && (
             <Elem
               tag="span"
               name="score"
