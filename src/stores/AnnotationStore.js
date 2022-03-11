@@ -141,6 +141,7 @@ const Annotation = types
       return self.results
         .map(r => r.serialize())
         .filter(Boolean)
+        .sort((a, b) => a.score - b.score)
         .concat(self.relationStore.serializeAnnotation());
     },
 
