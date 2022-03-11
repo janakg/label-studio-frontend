@@ -351,7 +351,7 @@ export default types.model("RegionStore", {
       regionIds.forEach(((id, inx) => {
         const region = self.regions.find(r => r.id === id);
 
-        region.setScore(inx);
+        region.setScore(inx + 1);
       }));
     }
 
