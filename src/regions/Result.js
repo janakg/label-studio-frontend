@@ -277,6 +277,10 @@ const Result = types
         data.parentID = self.area.parentID.replace(/#.*/, "");
       }
 
+      if (self.area.score) {
+        data.score = self.area.score;
+      }
+
       Object.assign(data, { id, from_name, to_name, type, origin: self.area.origin });
 
       if (isDefined(value[valueType])) {
@@ -298,7 +302,7 @@ const Result = types
           source: parent.value,
           type: control.type,
           parent_id: self.parentID === "" ? null : self.parentID,
-          score: self.score? self.score :  null,
+          score: parent.score? parent.score :  null,
         };
 
         if (self.normalization) tree["normalization"] = self.normalization;

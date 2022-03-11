@@ -176,7 +176,7 @@ const RegionsMixin = types
             to_name: parent.name,
             source: parent.value,
             type: control.type,
-            score: self.score? self.score :  null,
+            score: parent.score? parent.score :  null,
             parent_id: self.parentID === "" ? null : self.parentID,
           };
 
