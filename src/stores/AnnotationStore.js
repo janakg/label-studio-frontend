@@ -733,6 +733,7 @@ const Annotation = types
       const result = self.results
         .map(r => r.serialize(options))
         .filter(Boolean)
+        .sort((a, b) => a.score - b.score)
         .concat(self.relationStore.serializeAnnotation(options));
 
       document.body.style.cursor = "default";
