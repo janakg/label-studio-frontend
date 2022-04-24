@@ -17,7 +17,7 @@ import Area from "../regions/Area";
 import throttle from "lodash.throttle";
 import { ViewModel } from "../tags/visual";
 import { UserExtended } from "./UserStore";
-import { FF_DEV_1555, FF_DEV_1621, isFF } from "../utils/feature-flags";
+import { FF_DEV_1621, FF_DEV_2100, isFF } from "../utils/feature-flags";
 
 const hotkeys = Hotkey("Annotations", "Annotations");
 
@@ -47,7 +47,7 @@ const Annotation = types
     parent_annotation: types.maybeNull(types.integer),
     last_annotation_history: types.maybeNull(types.integer),
 
-    loadedDate: types.optional(types.Date, new Date()),
+    loadedDate: types.optional(types.Date, () => new Date()),
     leadTime: types.maybeNull(types.number),
 
     // @todo use types.Date
@@ -81,6 +81,7 @@ const Annotation = types
       regions: [],
     }),
 
+    comment: types.optional(types.maybeNull(types.string), null),
   })
   .preProcessSnapshot(sn => {
     // sn.draft = Boolean(sn.draft);
@@ -851,6 +852,23 @@ const Annotation = types
       history.unfreeze("richtext:suggestions");
     },
 
+    cleanClassificationAreas() {
+      const classificationAreasByControlName = {};
+      const duplicateAreaIds = [];
+
+      self.areas.forEach(a => {
+        const controlName = a.results[0].from_name.name;
+
+        if (a.classification) {
+          if (classificationAreasByControlName[controlName]) {
+            duplicateAreaIds.push(classificationAreasByControlName[controlName]);
+          }
+          classificationAreasByControlName[controlName] = a.id;
+        }
+      });
+      duplicateAreaIds.forEach(id => self.areas.delete(id));
+    },
+
     /**
      * Deserialize results
      * @param {string | Array<any>} json Input results
@@ -871,6 +889,8 @@ const Annotation = types
             (snapshot) => areas.put(snapshot),
           );
         });
+
+        if (isFF(FF_DEV_2100)) self.cleanClassificationAreas();
 
         !hidden && self.results
           .filter(r => r.area.classification)
